@@ -11,6 +11,13 @@ After fetching the repository, do
     cmake -DCMAKE_INSTALL_PREFIX=<path_to_install_directory> ..
     make -j4 install
 
+For visualization, do
+
+    cd build
+    ccmake ..
+    WITH_GEANT4_UIVIS -> ON
+    configure & generate
+
 ### Analysis
 
     ./bin/analysis <path_to_root_files> <low_edge_of_hist> <truth_E> <high_edge> <outputfile_name>
