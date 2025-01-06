@@ -1,5 +1,5 @@
 # DRC generic
-Repository for GEANT4 simulation &amp; analysis of the dual-readout calorimeter for general purpose.
+Repository for tutorial of GEANT4 simulation &amp; analysis of the dual-readout calorimeter.
 
 ## How-to
 ### Compile
