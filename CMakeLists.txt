@@ -10,6 +10,6 @@ set(FASTJET_DIR "$ENV{FASTJET_DIR}")
 
 add_subdirectory(rootIO)
 add_subdirectory(DRsim)
-add_subdirectory(Gen)
+# add_subdirectory(Gen)
 # add_subdirectory(Reco)
 add_subdirectory(analysis)

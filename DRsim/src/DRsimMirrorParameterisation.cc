@@ -18,8 +18,8 @@ DRsimMirrorParameterisation::DRsimMirrorParameterisation(const G4int numx, const
     G4int row = copyNo % numy;
 
     if ( RecoInterface::IsCerenkov(column,row) ) {
-      fXMirror.push_back( -90.*mm/2 + column*1.5*mm + 0.75*mm );
-      fYMirror.push_back( -90.*mm/2 + row*1.5*mm + 0.75*mm );
+      fXMirror.push_back( -99.*mm/2 + column*1.5*mm + 0.75*mm );
+      fYMirror.push_back( -99.*mm/2 + row*1.5*mm + 0.75*mm );
     }
   }
   fNumx = numx;

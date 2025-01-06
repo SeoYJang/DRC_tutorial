@@ -27,7 +27,7 @@ using namespace std;
 G4ThreadLocal DRsimMagneticField* DRsimDetectorConstruction::fMagneticField = 0;
 G4ThreadLocal G4FieldManager* DRsimDetectorConstruction::fFieldMgr = 0;
 
-int DRsimDetectorConstruction::fNofRow = 7;
+int DRsimDetectorConstruction::fNofRow = 3;
 int DRsimDetectorConstruction::fNofModules = fNofRow * fNofRow;
 
 DRsimDetectorConstruction::DRsimDetectorConstruction()
@@ -101,8 +101,8 @@ G4VPhysicalVolume* DRsimDetectorConstruction::Construct() {
 
   fFrontL     = 1500.;     // NOTE :: Length from the center of world box to center of module
   fTowerDepth = 2500.; 
-  fModuleH    = 90;
-  fModuleW    = 90;
+  fModuleH    = 99;
+  fModuleW    = 99;
   fFiberUnitH = 1.;
 
 
@@ -120,6 +120,8 @@ G4VPhysicalVolume* DRsimDetectorConstruction::Construct() {
   dimCalc = new dimensionCalc();
   dimCalc->SetFrontL(fFrontL);
   dimCalc->SetTower_height(fTowerDepth);
+  dimCalc->SetModule_height(fModuleH);
+  dimCalc->SetModule_width(fModuleW);
   dimCalc->SetPMTT(PMTT+filterT);
   dimCalc->SetReflectorT(reflectorT);
   dimCalc->SetNofModules(fNofModules);
@@ -186,7 +188,7 @@ void DRsimDetectorConstruction::ModuleBuild(G4LogicalVolume* ModuleLogical_[],
       G4VSolid* PMTcellSolid = new G4Box("PMTcellSolid", 1.2/2. *mm, 1.2/2. *mm, PMTT/2. *mm );
       PMTcellLogical_[i] = new G4LogicalVolume(PMTcellSolid,FindMaterial("Glass"),"PMTcellLogical_");
 
-      DRsimCellParameterisation* PMTcellParam = new DRsimCellParameterisation(fTowerXY.first,fTowerXY.second);
+      DRsimCellParameterisation* PMTcellParam = new DRsimCellParameterisation(fTowerXY.first,fTowerXY.second,fModuleH,fModuleW);
       G4PVParameterised* PMTcellPhysical = new G4PVParameterised("PMTcellPhysical",PMTcellLogical_[i],SiPMlayerLogical,kXAxis,fTowerXY.first*fTowerXY.second,PMTcellParam);
 
       G4VSolid* PMTcathSolid = new G4Box("PMTcathSolid", 1.2/2. *mm, 1.2/2. *mm, filterT/2. *mm );
@@ -197,7 +199,7 @@ void DRsimDetectorConstruction::ModuleBuild(G4LogicalVolume* ModuleLogical_[],
       G4VSolid* filterSolid = new G4Box("filterSolid", 1.2/2. *mm, 1.2/2. *mm, filterT/2. *mm );
       PMTfilterLogical_[i] = new G4LogicalVolume(filterSolid,FindMaterial("Gelatin"),"PMTfilterLogical_");
 
-      DRsimFilterParameterisation* filterParam = new DRsimFilterParameterisation(fTowerXY.first,fTowerXY.second);
+      DRsimFilterParameterisation* filterParam = new DRsimFilterParameterisation(fTowerXY.first,fTowerXY.second,fModuleH,fModuleW);
       G4PVParameterised* filterPhysical = new G4PVParameterised("filterPhysical",PMTfilterLogical_[i],filterlayerLogical,kXAxis,fTowerXY.first*fTowerXY.second/2,filterParam);
       new G4LogicalBorderSurface("filterSurf",filterPhysical,PMTcellPhysical,FindSurface("FilterSurf"));
           
@@ -233,8 +235,8 @@ void DRsimDetectorConstruction::FiberImplement(G4int i, G4LogicalVolume* ModuleL
   fFiberY.clear();
   fFiberWhich.clear();
 
-  int NofFiber = 60;   
-  int NofPlate = 60;   
+  int NofFiber = fModuleW*2/3; 
+  int NofPlate = fModuleH*2/3; 
   double randDeviation = 0.; //  double randDeviation = fFiberUnitH - 1.;
   fTowerXY = std::make_pair(NofPlate,NofFiber);
   
@@ -244,8 +246,8 @@ void DRsimDetectorConstruction::FiberImplement(G4int i, G4LogicalVolume* ModuleL
       /*
         ? fX : # of plate , fY : # of fiber in the plate
       */
-      G4float fX = -90.*mm/2 + k*1.5*mm + 0.75*mm;
-      G4float fY = -90.*mm/2 + j*1.5*mm + 0.75*mm;
+      G4float fX = -fModuleH*mm/2 + k*1.5*mm + 0.75*mm;
+      G4float fY = -fModuleW*mm/2 + j*1.5*mm + 0.75*mm;
       fWhich = !fWhich;
       fFiberX.push_back(fX);
       fFiberY.push_back(fY);

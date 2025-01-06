@@ -21,6 +21,8 @@ public:
   void SetNofRow(G4int NofRow) { fNofRow = NofRow; }
   void SetFrontL(G4double frontL) { fFrontL = frontL; }
   void SetTower_height(G4double tower_height) { ftower_height = tower_height; }
+  void SetModule_height(G4double module_height) {fmodule_height = module_height; }
+  void SetModule_width(G4double module_width) {fmodule_width = module_width; }
   void SetPMTT(G4double PMTT) { fPMTT = PMTT; }
   void SetReflectorT(G4double ReflectorT) { fReflectorT = ReflectorT; }
   void SetisModule(G4bool isModule) { fisModule = isModule; }
@@ -41,6 +43,8 @@ private:
   G4int fNofRow;
   G4double ftower_front;
   G4double ftower_height;
+  G4double fmodule_height;
+  G4double fmodule_width;
   G4double fFrontL;
   G4double fPMTT;
   G4double fReflectorT;

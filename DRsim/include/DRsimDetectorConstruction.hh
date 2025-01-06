@@ -139,7 +139,7 @@ private:
   G4LogicalVolume* worldLogical;
 
   G4String setModuleName(int i) {
-    return "Module" + std::to_string(i);
+    return std::to_string(i);
   }
 };
 
