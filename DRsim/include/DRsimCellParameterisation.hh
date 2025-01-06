@@ -9,7 +9,7 @@ class G4VPhysicalVolume;
 
 class DRsimCellParameterisation : public G4VPVParameterisation {
 public:
-  DRsimCellParameterisation(const G4int numx, const G4int numy);
+  DRsimCellParameterisation(const G4int numx, const G4int numy, const G4double moduleH, const G4double moduleW);
   virtual ~DRsimCellParameterisation();
 
   virtual void ComputeTransformation(const G4int copyNo, G4VPhysicalVolume* physVol) const;
