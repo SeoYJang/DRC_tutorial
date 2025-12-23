@@ -63,6 +63,15 @@ void DRsimMaterials::CreateMaterials() {
   fW  = new G4Material("Tungsten", z = 74., a = 183.84 * g/mole, density = 19.30 * g/cm3);
   fFe = new G4Material("Iron"    , z = 26., a = 55.845 * g/mole, density = 7.874 * g/cm3);
   fPb = new G4Material("Lead"    , z = 82., a = 207.2  * g/mole, density = 11.35 * g/cm3);
+  fCuZn37 = new G4Material("Brass", density=8.44*g/cm3, 2);
+  fCuZn64 = new G4Material("Brass64", density=8.23*g/cm3, 2);
+
+  auto elCu = fNistMan->FindOrBuildElement(29, true);
+  auto elZn = fNistMan->FindOrBuildElement(30, true);
+  fCuZn37->AddElement(elCu, 0.7);
+  fCuZn37->AddElement(elZn, 0.3);
+  fCuZn64->AddElement(elCu, 0.6);
+  fCuZn64->AddElement(elZn, 0.4);
 
   fSi = new G4Material("Silicon", z=14., a=28.09*g/mole, density=2.33*g/cm3);
   fAl = new G4Material("Aluminum", z=13., a=26.98*g/mole, density=2.699*g/cm3);
@@ -181,10 +190,33 @@ void DRsimMaterials::CreateMaterials() {
   fSiPMSurf = new G4OpticalSurface("SiPMSurf",glisur,polished,dielectric_metal);
   fSiPMSurf->SetMaterialPropertiesTable(mpSiPM);
 
-  G4double filterEff[nEnt] = {
+  /*G4double filterEff[nEnt] = {
     1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000,
     1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 0.900, 0.734,
     0.568, 0.402, 0.296, 0.070, 0.000, 0.000, 0.000, 0.000, 0.000
+  };*/
+
+  // Wratten #12
+  /*G4double filterEff[nEnt] = {
+    0.913, 0.913, 0.913, 0.913, 0.913, 0.913, 0.913, 0.913, 
+    0.913, 0.912, 0.910, 0.907, 0.904, 0.899, 0.884, 0.692, 
+    0.015, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000
+  };*/
+
+  // Wratten #8
+  /*
+  G4double filterEff[nEnt] = {
+    0.902, 0.902, 0.902, 0.902, 0.902, 0.902, 0.902, 0.895,
+    0.895, 0.895, 0.887, 0.887, 0.877, 0.873, 0.866, 0.841, 
+    0.668, 0.126, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000
+  };
+  */
+
+  // Wratten #3
+  G4double filterEff[nEnt] = {
+    0.928, 0.928, 0.928, 0.928, 0.928, 0.928, 0.928, 0.928,
+    0.928, 0.928, 0.928, 0.928, 0.928, 0.928, 0.919, 0.903,
+    0.879, 0.768, 0.151, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000
   };
   G4double filterRef[nEnt]; std::fill_n(filterRef,nEnt,0.);
   G4double RI_gel[nEnt]; std::fill_n(RI_gel,nEnt,1.52);

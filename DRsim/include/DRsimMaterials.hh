@@ -27,6 +27,8 @@ private:
   G4Material* fW;
   G4Material* fPb;
   G4Material* fFe;
+  G4Material* fCuZn37;
+  G4Material* fCuZn64;
   G4Material* fSi;
   G4Material* fAl;
   G4Material* fGlass;
