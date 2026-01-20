@@ -1,8 +1,6 @@
 #ifndef DRsimPrimaryGeneratorAction_h
 #define DRsimPrimaryGeneratorAction_h 1
 
-#include "HepMCG4Reader.hh"
-
 #include "globals.hh"
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "G4ParticleGun.hh"

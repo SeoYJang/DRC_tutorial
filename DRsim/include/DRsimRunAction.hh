@@ -3,7 +3,6 @@
 
 #include "RootInterface.h"
 #include "DRsimInterface.h"
-#include "HepMCG4Reader.hh"
 
 #include "G4UserRunAction.hh"
 #include "globals.hh"
@@ -18,7 +17,6 @@ public:
   virtual void BeginOfRunAction(const G4Run*);
   virtual void EndOfRunAction(const G4Run*);
 
-  static HepMCG4Reader* sHepMCreader;
   static RootInterface<DRsimInterface::DRsimEventData>* sRootIO;
   static int sNumEvt;
 

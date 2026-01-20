@@ -25,7 +25,7 @@ include(${Geant4_USE_FILE})
 # NB: headers are included so they will show up in IDEs
 #
 include_directories(
-  ${HEPMC_DIR}/include
+  #${HEPMC_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${Geant4_INCLUDE_DIR}
 )
@@ -38,8 +38,8 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 add_executable(DRsim DRsim.cc ${sources} ${headers})
 target_link_libraries(
   DRsim ${Geant4_LIBRARIES}
-  ${HEPMC_DIR}/lib64/libHepMC3.so
-  ${HEPMC_DIR}/lib64/libHepMC3rootIO.so
+  #${HEPMC_DIR}/lib64/libHepMC3.so
+  #${HEPMC_DIR}/lib64/libHepMC3rootIO.so
   rootIO
 )
 
