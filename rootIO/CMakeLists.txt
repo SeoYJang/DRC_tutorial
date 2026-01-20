@@ -4,7 +4,7 @@ find_package(ROOT REQUIRED)
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/include
-  ${FASTJET_DIR}/include
+  #${FASTJET_DIR}/include
 )
 file(GLOB sources
   ${PROJECT_SOURCE_DIR}/src/*.cc
@@ -19,7 +19,7 @@ add_library(rootIO SHARED ${sources} G__rootIO.cxx)
 target_include_directories(rootIO PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${ROOT_INCLUDE_DIRS})
 target_link_libraries(
   rootIO
-  ${FASTJET_DIR}/lib/libfastjet.so
+  #${FASTJET_DIR}/lib/libfastjet.so
   ${ROOT_LIBRARIES}
 )
 

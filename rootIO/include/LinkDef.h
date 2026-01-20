@@ -1,4 +1,3 @@
-#include "fastjetInterface.h"
 #include <vector>
 
 #if defined(__CLING__) || defined(__CINT__)
