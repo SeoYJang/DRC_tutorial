@@ -3,7 +3,6 @@
 /DRsim/action/useHepMC False
 /DRsim/action/useCalib False
 
-/vis/disable
 /run/numberOfThreads 1
 /run/initialize
 /run/verbose 1
@@ -17,6 +16,6 @@
 /DRsim/generator/randy 10
 
 /gun/particle e-
-/gun/energy 20 GeV
-/run/beamOn 2
+/gun/energy 1 GeV
+/run/beamOn 1
 
