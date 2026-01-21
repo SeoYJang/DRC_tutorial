@@ -27,6 +27,15 @@ After compiling, inside /build folder, run
     cd DRsim
     ./DRsim
 
+### Run
+To generate an event (execute a run),
+
+    ./DRsim <macro_file> <seed> <outputfile_name>
+
+e.g.)
+
+    ./DRsim run_ele.mac 1 output
+
 ### Analysis
 To analyze output root file, inside /build folder, run
 
