@@ -5,7 +5,7 @@ Repository for tutorial of GEANT4 simulation &amp; analysis of the dual-readout 
 ### Fetching
 On your terminal (in Alma9 Linux environment // VMWare),
 
-    git clone -b https://github.com/SeoYJang/DRC_tutorial
+    git clone -b Alma9 https://github.com/SeoYJang/DRC_tutorial
 
 ### Compile
 After fetching the repository, do
