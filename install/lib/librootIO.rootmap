@@ -1,0 +1,23 @@
+{ decls }
+namespace std {  }
+
+[ librootIO.so ]
+# List of selected classes
+class DRsimInterface
+class DRsimInterface::DRsimEdepData
+class DRsimInterface::DRsimEventData
+class DRsimInterface::DRsimGenData
+class DRsimInterface::DRsimLeakageData
+class DRsimInterface::DRsimTowerData
+class DRsimInterface::threeVector
+class RecoInterface
+class RecoInterface::RecoEventData
+class RecoInterface::RecoTowerData
+class fastjetInterface
+class fastjetInterface::fastjetData
+class tuple<float,float,float>
+class vector<fastjetInterface::fastjetData>
+class vector<fastjetInterface::fastjetDataBase>
+header DRsimInterface.h
+header RecoInterface.h
+header fastjetInterface.h
