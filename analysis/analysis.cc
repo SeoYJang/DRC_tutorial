@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
             tT_C->Fill(timepair.first.first+0.05,timepair.second);
             if (timepair.first.first < 35) {
               nHitC += timepair.second;
-              t2DhitC->Fill(60*(moduleNum%7)+fiberNum, 60*(moduleNum/7)+plateNum, timepair.second);
+              t2DhitC->Fill(66*(moduleNum%7)+fiberNum, 66*(moduleNum/7)+plateNum, timepair.second);
             }
           }
           for (const auto wavpair : sipm->wavlenSpectrum) {
