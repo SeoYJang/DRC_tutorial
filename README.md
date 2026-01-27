@@ -44,4 +44,4 @@ To analyze output root file, inside /build folder, run
 
 e.g.)
 
-    ./bin/analysis /home/USER/20GeV_ele_data 0 20 25 ./20GeV_ele
+    ./bin/analysis /home/USER/20GeV_ele_data 10 20 30 output
