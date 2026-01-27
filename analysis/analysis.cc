@@ -28,8 +28,6 @@ int main(int argc, char* argv[]) {
 
   RootInterface<DRsimInterface::DRsimEventData>* drInterface = new RootInterface<DRsimInterface::DRsimEventData>(std::string(filename)+".root", true);
   drInterface->set("DRsim","DRsimEventData");
-  //RootInterface<DRsimInterface::DRsimEventData>* drInterface = new RootInterface<DRsimInterface::DRsimEventData>(std::string(filename), false);
-  //drInterface->GetChain("DRsim");
 
   TH1F* tEdep = new TH1F("totEdep","Total Energy deposit;MeV;Evt",100,low*1000.,high*1000.);
   tEdep->Sumw2(); tEdep->SetLineColor(kRed); tEdep->SetLineWidth(2);
@@ -120,7 +118,6 @@ int main(int argc, char* argv[]) {
     tHit_C->Fill(nHitC);
     tHit_S->Fill(nHitS);
   } // event loop
-  drInterface->close();
 
   TCanvas* c = new TCanvas("c","");
 
