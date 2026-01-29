@@ -26,8 +26,8 @@ int main(int argc, char* argv[]) {
 
   gStyle->SetOptFit(1);
 
-  RootInterface<DRsimInterface::DRsimEventData>* drInterface = new RootInterface<DRsimInterface::DRsimEventData>(std::string(filename), false);
-  drInterface->GetChain("DRsim");
+  RootInterface<DRsimInterface::DRsimEventData>* drInterface = new RootInterface<DRsimInterface::DRsimEventData>(std::string(filename)+".root", true);
+  drInterface->set("DRsim","DRsimEventData");
 
   TH1F* tEdep = new TH1F("totEdep","Total Energy deposit;MeV;Evt",100,low*1000.,high*1000.);
   tEdep->Sumw2(); tEdep->SetLineColor(kRed); tEdep->SetLineWidth(2);
