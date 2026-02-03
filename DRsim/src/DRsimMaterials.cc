@@ -190,11 +190,11 @@ void DRsimMaterials::CreateMaterials() {
   fSiPMSurf = new G4OpticalSurface("SiPMSurf",glisur,polished,dielectric_metal);
   fSiPMSurf->SetMaterialPropertiesTable(mpSiPM);
 
-  /*G4double filterEff[nEnt] = {
+  G4double filterEff[nEnt] = {
     1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000,
     1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 0.900, 0.734,
     0.568, 0.402, 0.296, 0.070, 0.000, 0.000, 0.000, 0.000, 0.000
-  };*/
+  };
 
   // Wratten #12
   /*G4double filterEff[nEnt] = {
@@ -213,11 +213,11 @@ void DRsimMaterials::CreateMaterials() {
   */
 
   // Wratten #3
-  G4double filterEff[nEnt] = {
+  /*G4double filterEff[nEnt] = {
     0.928, 0.928, 0.928, 0.928, 0.928, 0.928, 0.928, 0.928,
     0.928, 0.928, 0.928, 0.928, 0.928, 0.928, 0.919, 0.903,
     0.879, 0.768, 0.151, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000
-  };
+  };*/
   G4double filterRef[nEnt]; std::fill_n(filterRef,nEnt,0.);
   G4double RI_gel[nEnt]; std::fill_n(RI_gel,nEnt,1.52);
   mpFilter = new G4MaterialPropertiesTable();
