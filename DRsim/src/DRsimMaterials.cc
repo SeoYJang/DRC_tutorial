@@ -179,22 +179,29 @@ void DRsimMaterials::CreateMaterials() {
   fGlass->SetMaterialPropertiesTable(mpGlass);
 
   G4double refl_SiPM[nEnt]; std::fill_n(refl_SiPM, nEnt, 0.);
+  // PMT R11265U-100
   G4double eff_SiPM[nEnt] = {
+    0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00,
+    0.00, 0.00, 0.01, 0.01, 0.02, 0.04, 0.07, 0.12,
+    0.20, 0.24, 0.29, 0.33, 0.34, 0.35, 0.35, 0.33, 0.29
+  };
+  // SiPM S13615-1025N
+  /*G4double eff_SiPM[nEnt] = {
     0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10,
     0.11, 0.13, 0.15, 0.17, 0.19, 0.20, 0.22, 0.23,
     0.24, 0.25, 0.24, 0.23, 0.21, 0.20, 0.17, 0.14, 0.10
-  };
+  };*/
   mpSiPM = new G4MaterialPropertiesTable();
   mpSiPM->AddProperty("REFLECTIVITY",opEn,refl_SiPM,nEnt);
   mpSiPM->AddProperty("EFFICIENCY",opEn,eff_SiPM,nEnt);
   fSiPMSurf = new G4OpticalSurface("SiPMSurf",glisur,polished,dielectric_metal);
   fSiPMSurf->SetMaterialPropertiesTable(mpSiPM);
 
-  G4double filterEff[nEnt] = {
+  /*G4double filterEff[nEnt] = {
     1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000,
     1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 0.900, 0.734,
     0.568, 0.402, 0.296, 0.070, 0.000, 0.000, 0.000, 0.000, 0.000
-  };
+  };*/
 
   // Wratten #12
   /*G4double filterEff[nEnt] = {
@@ -218,6 +225,13 @@ void DRsimMaterials::CreateMaterials() {
     0.928, 0.928, 0.928, 0.928, 0.928, 0.928, 0.919, 0.903,
     0.879, 0.768, 0.151, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000
   };*/
+
+  // No Filter
+  G4double filterEff[nEnt] = {
+    1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000,
+    1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000,
+    1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000
+  };
   G4double filterRef[nEnt]; std::fill_n(filterRef,nEnt,0.);
   G4double RI_gel[nEnt]; std::fill_n(RI_gel,nEnt,1.52);
   mpFilter = new G4MaterialPropertiesTable();
