@@ -33,6 +33,10 @@ public:
 
   static int fNofModules;
   static int fNofRow;
+  static int fNofModules_2022_M1;
+  static int fNofRow_2022_M1;
+  static int fNofModules_2022_M2;
+  static int fNofRow_2022_M2;
 
 private:
   void DefineCommands();
@@ -45,8 +49,6 @@ private:
                     std::vector<G4LogicalVolume*> fiberUnitIntersection_[], std::vector<G4LogicalVolume*> fiberCladIntersection_[], std::vector<G4LogicalVolume*> fiberCoreIntersection_[],
                     std::vector<G4LogicalVolume*> AirGapIntersection_[], 
                     std::vector<DRsimInterface::DRsimModuleProperty>& towerProps_);
-
-  void ModuleBuild_LC(G4LogicalVolume* ModuleLogical_[], std::vector<DRsimInterface::DRsimModuleProperty>& ModuleProp_);
 
   void FiberImplement(G4int i, G4LogicalVolume* ModuleLogical__[], 
                    std::vector<G4LogicalVolume*> fiberUnitIntersection__[], std::vector<G4LogicalVolume*> fiberCladIntersection__[], std::vector<G4LogicalVolume*> fiberCoreIntersection__[],
@@ -73,7 +75,6 @@ private:
   G4double fModuleW;
   G4double fFiberUnitH;
   G4double fAirgapH;
-  G4double fAirgap_rad;
   G4int fRandomSeed;
 
   G4double PMTT;
@@ -96,31 +97,29 @@ private:
 
   G4Box* fiberAirgap;
   G4Box* fiberUnit;
-  G4Box* fiberCladS_Square;
-  G4Box* fiberCoreS_Square;
   G4Tubs* fiberClad;
   G4Tubs* fiberCladS;
   G4Tubs* fiberCoreS;
   G4Tubs* fiberCoreC;
-  G4Tubs* fiberClad_inner;  
-  G4Tubs* fiberCoreS_inner;
-  // G4VSolid* tfiberUnitIntersection;
-  // G4VSolid* tfiberCladIntersection;
-  // G4VSolid* tfiberCoreIntersection;
-  // G4VSolid* tAirGapIntersection;
+  
+  //G4VSolid* tfiberUnitIntersection;
+  //G4VSolid* tfiberCladIntersection;
+  //G4VSolid* tfiberCoreIntersection;
+  //G4VSolid* tAirGapIntersection;
 
-  G4LogicalVolume* ModuleLogical[100];
+  G4LogicalVolume* ModuleLogical[600];
 
-  G4LogicalVolume* PMTGLogical[100];
-  G4LogicalVolume* PMTcathLogical[100];
-  G4LogicalVolume* PMTcellLogical[100];
-  G4LogicalVolume* PMTfilterLogical[100];
-  G4LogicalVolume* ReflectorMirrorLogical[100];
+  G4LogicalVolume* PMTGLogical[600];
+  G4LogicalVolume* PMTcathLogical[600];
+  G4LogicalVolume* PMTcellLogical[600];
+  G4LogicalVolume* PMTfilterLogical[600];
+  G4LogicalVolume* ReflectorMirrorLogical[600];
 
-  vector<G4LogicalVolume*> fiberUnitIntersection[100];
-  vector<G4LogicalVolume*> fiberCladIntersection[100];
-  vector<G4LogicalVolume*> fiberCoreIntersection[100];
-  vector<G4LogicalVolume*> AirGapIntersection[100];
+  vector<G4LogicalVolume*> fiberUnitIntersection[600];
+  vector<G4LogicalVolume*> fiberCladIntersection[600];
+  vector<G4LogicalVolume*> fiberCoreIntersection[600];
+  vector<G4LogicalVolume*> AirGapIntersection[600];
+  vector<G4LogicalVolume*> fiberinnerCladIntersection;
 
   DRsimInterface::hitXY fTowerXY;
   std::vector<DRsimInterface::DRsimModuleProperty> fModuleProp;
