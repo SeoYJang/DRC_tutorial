@@ -9,8 +9,6 @@
 source /cvmfs/sft.cern.ch/lcg/views/LCG_107/x86_64-el9-gcc11-opt/setup.sh
 #source /cvmfs/geant4.cern.ch/geant4/11.3.p02/x86_64-el9-gcc11-optdeb-MT/CMake-setup.sh
 source /cvmfs/geant4.cern.ch/geant4/11.4/x86_64-el9-gcc11-optdeb-MT/CMake-setup.sh
-
-SIPM_INSTALL=/u/user/syjang/DRC_tutorial/SimSiPM/install
 export LD_LIBRARY_PATH=$SIPM_INSTALL/lib64:$LD_LIBRARY_PATH
 export CPATH=$SIPM_INSTALL/include:$CPATH
 export CMAKE_PREFIX_PATH=$SIPM_INSTALL:${CMAKE_PREFIX_PATH:-}
