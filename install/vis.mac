@@ -3,7 +3,11 @@
 /control/verbose 2
 #
 # Use this open statement to create an OpenGL view:
-/vis/open OGL 600x600-0+0
+# XQuartz/SSH cannot create a GLX context, so GLES fails.
+# Use the X11 software (Z-buffer) driver instead:
+/vis/open TSG_X11_ZB 600x600-0+0
+#/vis/open TSG_X11_GLES 600x600-0+0
+#/vis/open OGL 600x600-0+0
 #
 # Use this open statement to create a .prim file suitable for
 # viewing in DAWN:
