@@ -1,11 +1,11 @@
 # DRC generic
-Repository for tutorial of GEANT4 simulation &amp; analysis of the dual-readout calorimeter.
+Repository for powder absorber geometry of DRC simulation &amp; analysis of the dual-readout calorimeter.
 
 ## How-to
 ### Fetching
 On KNU or FCC
 
-    git clone -b FCC_test https://github.com/SeoYJang/DRC_tutorial
+    git clone -b PowderDRC https://github.com/SeoYJang/DRC_tutorial
 
 ### Compile
 After fetching the repository, do

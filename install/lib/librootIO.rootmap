@@ -13,11 +13,6 @@ class DRsimInterface::threeVector
 class RecoInterface
 class RecoInterface::RecoEventData
 class RecoInterface::RecoTowerData
-class fastjetInterface
-class fastjetInterface::fastjetData
 class tuple<float,float,float>
-class vector<fastjetInterface::fastjetData>
-class vector<fastjetInterface::fastjetDataBase>
 header DRsimInterface.h
 header RecoInterface.h
-header fastjetInterface.h

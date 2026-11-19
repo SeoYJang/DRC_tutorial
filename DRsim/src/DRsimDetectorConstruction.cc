@@ -158,12 +158,11 @@ void DRsimDetectorConstruction::ModuleBuild(G4LogicalVolume* ModuleLogical_[],
     
     dimCalc->SetisModule(true);
     module = new G4Box("Module", (fModuleH/2.) *mm, (fModuleW/2.) *mm, (fTowerDepth/2.) *mm );
-    ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Copper"),moduleName);
-    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Brass"),moduleName);
-    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Brass64"),moduleName);
-    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Lead"),moduleName);
-    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Iron"),moduleName);
-    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Tungsten"),moduleName);
+    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Copper"),moduleName);
+    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Brass64Powder"),moduleName);
+    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("Brass73Powder"),moduleName);
+    //ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("LeadPowder"),moduleName);
+    ModuleLogical_[i] = new G4LogicalVolume(module,FindMaterial("TungstenPowder"),moduleName);
     // G4VPhysicalVolume* modulePhysical = new G4PVPlacement(0,dimCalc->GetOrigin(i),ModuleLogical_[i],moduleName,worldLogical,false,0,checkOverlaps);
     new G4PVPlacement(0,dimCalc->GetOrigin(i),ModuleLogical_[i],moduleName,worldLogical,false,0,checkOverlaps);
 

@@ -79,6 +79,29 @@ void DRsimMaterials::CreateMaterials() {
   fVacuum = G4Material::GetMaterial("G4_Galactic");
   fAir = G4Material::GetMaterial("G4_AIR");
 
+  G4double powder_fraction[] = {0.35, 0.30, 0.62, 0.60}; // Brass64, Brass73, Lead, Tungsten
+  G4double material_density[] = {8.23*g/cm3, 8.44*g/cm3, 11.35*g/cm3, 19.30*g/cm3};
+  G4double powder_density[] = {};
+  for (int i = 0; i < 4; i++) {
+    powder_density[i] = powder_fraction[i] * material_density[i] + (1 - powder_fraction[i]) * fAir->GetDensity();
+  }
+
+  fBrass64Powder = new G4Material("Brass64Powder", powder_density[0], 2);
+  fBrass64Powder->AddMaterial(fCuZn64, powder_fraction[0]*material_density[0]/powder_density[0]);
+  fBrass64Powder->AddMaterial(fAir, 1 - powder_fraction[0]*material_density[0]/powder_density[0]);
+
+  fBrass73Powder = new G4Material("Brass73Powder", powder_density[1], 2);
+  fBrass73Powder->AddMaterial(fCuZn37, powder_fraction[1]*material_density[1]/powder_density[1]);
+  fBrass73Powder->AddMaterial(fAir, 1 - powder_fraction[1]*material_density[1]/powder_density[1]);
+
+  fLeadPowder = new G4Material("LeadPowder", powder_density[2], 2);
+  fLeadPowder->AddMaterial(fPb, powder_fraction[2]*material_density[2]/powder_density[2]);
+  fLeadPowder->AddMaterial(fAir, 1 - powder_fraction[2]*material_density[2]/powder_density[2]);
+
+  fTungstenPowder = new G4Material("TungstenPowder", powder_density[3], 2);
+  fTungstenPowder->AddMaterial(fW, powder_fraction[3]*material_density[3]/powder_density[3]);
+  fTungstenPowder->AddMaterial(fAir, 1 - powder_fraction[3]*material_density[3]/powder_density[3]);
+
   fFluoPoly = new G4Material("FluorinatedPolymer", density=1.43*g/cm3, ncomponents=2);
   fFluoPoly->AddElement(C, 2);
   fFluoPoly->AddElement(F, 2);

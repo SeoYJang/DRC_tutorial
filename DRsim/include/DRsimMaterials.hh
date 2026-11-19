@@ -35,6 +35,11 @@ private:
   G4Material* fGelatin;
   G4Material* fMirror;
   G4Material* fBlackpaint;
+
+  G4Material* fBrass64Powder;
+  G4Material* fBrass73Powder;
+  G4Material* fTungstenPowder;
+  G4Material* fLeadPowder;
   G4OpticalSurface* fSiPMSurf;
   G4OpticalSurface* fFilterSurf;
   G4OpticalSurface* fMirrorSurf;

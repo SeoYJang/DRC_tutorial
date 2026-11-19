@@ -4,7 +4,7 @@
 #include <vector>
 
 namespace functions {
-  float E_DR(float E_C, float E_S);
+  float E_DR(float E_C, float E_S, float chi);
   float E_DR291(float E_C, float E_S);
 }
 

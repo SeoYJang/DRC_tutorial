@@ -4,7 +4,7 @@ for i in "e-"
 do
     run_beamOn="1"
 
-    tower_material="copper"
+    tower_material="leadpowder"
 
 
     for j in 20
@@ -32,13 +32,11 @@ do
         root_name="${macroname}"
 
         ########################################################
-        results="/fcc/home/fcc_test/ifarm/tests/DRsim_test/DRC_tutorial/results/ele/$root_name/"
+        results="/fcc/home/syjang/DRC_tutorial/results/powder/$root_name/"
         ########################################################
 
         echo "starting submit for $gun_energy $gun_particle and the output will be $root_name.root"   
         
-        # ctrl+shift+L >> select same words    
-
         # Length from beam generator to tower front : 1500 mm
         # x = 1500*tan(theta)
         # 0.0 : 0 || 0.5 : -1.309 || 1.0 : -2.618 || 1.5 : -3.928 || 2.0 : -5.238 || 2.5 : -6.549 || 3.0 : -7.861
@@ -64,37 +62,8 @@ do
         # x(cm) : -7.861
         # y(cm) : 2.618
         # ---------------------------
-        # ---------------------------
-        # for Center of MCPPMT (theta 1.5) TB2024
-        # theta : 1.5
-        # phi   : 1.0
-        # x(cm) : -6.403
-        # y(cm) : 5.093
-        # ---------------------------
-        # ---------------------------
-        # for Center of SqrPMT, Tower 20 (theta 1.5) TB2024
-        # theta : 1.5
-        # phi   : 1.0
-        # x(cm) : -1.403
-        # y(cm) : 0.093
-        # ---------------------------
-        # ---------------------------
-        # for Center of SqrPMT, Tower 14 (theta 1.5) TB2024
-        # theta : 1.5
-        # phi   : -1.0
-        # x(cm) : -6.403
-        # y(cm) : -5.118
-        # ---------------------------
-        # ---------------------------
-        # for Center of MCPPMT (theta 0) TB2024
-        # theta : 0.0
-        # phi   : 0.0
-        # x(cm) : -2.5
-        # y(cm) : 2.5
-        # ---------------------------
         echo "/DRsim/action/useHepMC False" >> 1run_$macroname.mac
         echo "/DRsim/action/useCalib True" >> 1run_$macroname.mac
-        echo "/vis/disable" >> 1run_$macroname.mac
         echo "/run/numberOfThreads 1" >> 1run_$macroname.mac
         echo "/run/initialize" >>1run_$macroname.mac
         echo "/run/verbose 1" >> 1run_$macroname.mac
@@ -116,19 +85,20 @@ do
 
         echo "universe = vanilla" > 1run_$macroname.sub
         echo "executable = 1run_$macroname.sh" >> 1run_$macroname.sub
-        echo "arguments = \$(ProcId)" >> 1run_$macroname.sub
+        echo "MySeed = \$(ProcId)" >> 1run_$macroname.sub
+        echo "arguments = \$INT(MySeed)" >> 1run_$macroname.sub
         echo "core_size = 0" >> 1run_$macroname.sub
         echo "output = $results/log/\$(ProcId).out" >> 1run_$macroname.sub
         echo "error = $results/log/\$(ProcId).err" >> 1run_$macroname.sub
         echo "log = $results/log/\$(ProcId).log" >> 1run_$macroname.sub
         echo "request_cpus = 1" >> 1run_$macroname.sub
-        echo "request_memory = 1.0 GB" >> 1run_$macroname.sub
+        echo "request_memory = 1.1 GB" >> 1run_$macroname.sub
         echo "should_transfer_files = YES" >> 1run_$macroname.sub
         echo "when_to_transfer_output = ON_EXIT" >> 1run_$macroname.sub
         echo "transfer_input_files =./bin, ./lib, ./init.mac, ./1run_$macroname.mac" >> 1run_$macroname.sub
         echo "accounting_group = group_fcc" >> 1run_$macroname.sub
         echo "accounting_group_user = $(Owner)" >> 1run_$macroname.sub
-        echo "queue 1000" >> 1run_$macroname.sub
+        echo "queue 1500" >> 1run_$macroname.sub
 
         #cat 0_SimulationShFile.sh
         mkdir "$results"

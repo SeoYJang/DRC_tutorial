@@ -1,0 +1,5 @@
+# Local CMake/Geant4 build tree
+/build/
+
+# Simulation outputs (ROOT files, logs, plots)
+/results/
