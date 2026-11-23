@@ -53,9 +53,11 @@ int main(int argc, char** argv) {
   // User action initialization
   runManager->SetUserInitialization(new DRsimActionInitialization(seed,filename));
 
-  // Visualization manager construction
+  // Visualization manager construction. Initialize in batch as well so
+  // macros can issue /vis/disable; otherwise that command is unknown
+  // and Geant4 aborts the rest of the macro.
   G4VisManager* visManager = new G4VisExecutive;
-  if ( argc == 1 ) visManager->Initialize();
+  visManager->Initialize();
   
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
 

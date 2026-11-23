@@ -79,7 +79,6 @@ do
 
         echo "#! /bin/sh" > 1run_$macroname.sh
         echo "source /cvmfs/sft.cern.ch/lcg/views/LCG_107/x86_64-el9-gcc11-opt/setup.sh" >> 1run_$macroname.sh
-        echo "source /cvmfs/geant4.cern.ch/geant4/11.4/x86_64-el9-gcc11-optdeb-MT/CMake-setup.sh" >> 1run_$macroname.sh
         echo "export TERM=xterm" >> 1run_$macroname.sh
         echo "./bin/DRsim_${tower_material} 1run_$macroname.mac \$1 ${results}root/$root_name" >> 1run_$macroname.sh
 

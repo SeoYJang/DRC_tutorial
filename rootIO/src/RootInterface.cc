@@ -4,7 +4,7 @@
 
 template <typename T>
 RootInterface<T>::RootInterface(const std::string& filename, bool key)
-: fFilename(filename), fNumEvt(0) {
+: fChain(nullptr), fFile(nullptr), fTree(nullptr), fFilename(filename), fEventData(nullptr), fNumEvt(0) {
   if (key) init();
   if (!key) PrepareChain();
 }
